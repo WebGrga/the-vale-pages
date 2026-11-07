@@ -1,12 +1,384 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Vale</title>
-<style>body{font:18px/1.6 system-ui,sans-serif;max-width:640px;margin:48px auto;padding:0 20px;color:#222}a{color:#2a5d9f}</style></head>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Vale · a pixel-art village where AI agents live and work</title>
+<meta name="description" content="The Vale is a pixel-art world where every Claude Code project is a village and every AI agent is a resident who walks to work when real work happens. Made by Roko Grga.">
+<meta property="og:title" content="The Vale">
+<meta property="og:description" content="A pixel-art village where my Claude Code agents live and work.">
+<meta property="og:image" content="https://webgrga.github.io/the-vale-pages/assets/brag-poster.jpg">
+<meta property="og:url" content="https://webgrga.github.io/the-vale-pages/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://webgrga.github.io/the-vale-pages/">
+<link rel="icon" href="assets/favicon.png"><link rel="stylesheet" href="assets/fonts.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Person","@id":"https://webgrga.github.io/the-vale-pages/#roko","name":"Roko Grga","url":"https://webgrga.github.io/the-vale-pages/","email":"mailto:kaloshsoftware@gmail.com","sameAs":["https://www.youtube.com/@RokoTheG"]},
+ {"@type":"WebSite","@id":"https://webgrga.github.io/the-vale-pages/#site","name":"The Vale","url":"https://webgrga.github.io/the-vale-pages/","author":{"@id":"https://webgrga.github.io/the-vale-pages/#roko"}},
+ {"@type":"VideoObject","name":"I Gave My AI Agents a Village to Work In (Devlog 1)","description":"The first devlog of the Vale: a pixel-art village where Roko Grga's Claude Code agents live and work, what it is, why he built it, and the agents at work inside it.","thumbnailUrl":["https://i.ytimg.com/vi/D9SgLZhsdkc/hqdefault.jpg","https://webgrga.github.io/the-vale-pages/assets/devlog1.webp"],"uploadDate":"2026-11-06T09:00:13-08:00","duration":"PT11M45S","embedUrl":"https://www.youtube.com/embed/D9SgLZhsdkc","url":"https://www.youtube.com/watch?v=D9SgLZhsdkc","author":{"@id":"https://webgrga.github.io/the-vale-pages/#roko"},"isPartOf":{"@id":"https://webgrga.github.io/the-vale-pages/#site"}}
+]}
+</script>
+<style>
+:root{--night:#1b1b2a;--night2:#24233a;--panel:#f5efe0;--ink:#2a2438;--wood:#a9754a;--wood2:#7a5134;--red:#c44d3a;--gold:#e9b04d;--grass:#5a8f3c}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--panel);font:18px/1.65 Literata,Georgia,serif}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--panel);color:var(--ink);padding:12px 16px;z-index:9}
+.px{font-family:"Pixelify Sans",system-ui,sans-serif}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* header */
+header.top{position:sticky;top:0;z-index:5;background:rgba(27,27,42,.92);backdrop-filter:blur(6px);border-bottom:4px solid var(--wood2)}
+header.top .wrap{display:flex;align-items:center;gap:22px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;min-height:44px;font:700 26px/1 "Pixelify Sans";text-decoration:none}
+.brand i{width:32px;height:32px;background:url(assets/art/ppl_d85.png) 0 0/32px 32px;image-rendering:pixelated}
+nav{margin-left:auto;display:flex;align-items:center;gap:20px;font:600 17px/1 "Pixelify Sans"}
+nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;opacity:.85}nav a:hover{opacity:1;color:var(--gold)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 20px/1.1 "Pixelify Sans";text-decoration:none;color:var(--ink);background:var(--gold);padding:12px 22px 14px;border:4px solid var(--ink);box-shadow:inset -4px -4px 0 rgba(0,0,0,.18),0 6px 0 var(--ink);transition:transform .08s,box-shadow .08s;cursor:pointer}
+.btn:hover{transform:translateY(2px);box-shadow:inset -4px -4px 0 rgba(0,0,0,.18),0 4px 0 var(--ink)}
+.btn:active{transform:translateY(6px);box-shadow:inset -4px -4px 0 rgba(0,0,0,.18),0 0 0 var(--ink)}
+.btn.red{background:var(--red);color:var(--panel)}
+.btn.paper{background:var(--panel)}
+nav .btn{opacity:1;font-size:16px;padding:6px 14px 8px;min-height:44px;box-shadow:0 4px 0 var(--ink);background:var(--red);color:var(--panel)}
+nav .btn:hover{color:var(--panel)}
+
+/* hero */
+.hero{position:relative;padding:64px 0 0;overflow:hidden;background:url(assets/hero-bg.webp) 50% 0/100% auto no-repeat #57874e;image-rendering:pixelated}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,27,42,.5),rgba(27,27,42,.12) 40%,rgba(27,27,42,.95))}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:center}
+.sign{background:var(--panel);color:var(--ink);padding:32px 34px 28px;border:6px solid var(--wood);box-shadow:0 0 0 6px var(--ink),0 18px 0 6px rgba(0,0,0,.3)}
+.sign h1{font:700 clamp(54px,7vw,88px)/.95 "Pixelify Sans";margin:0 0 12px;color:var(--ink);text-shadow:0 5px 0 rgba(196,77,58,.35)}
+.by{display:flex;align-items:center;gap:10px;margin:0 0 16px;font:600 19px/1.2 "Pixelify Sans";color:var(--wood2)}
+.by img{width:32px;height:32px;image-rendering:pixelated;background:#e9dfc8;border:2px solid var(--ink);padding:2px;box-sizing:content-box}
+.by a{color:var(--ink)}
+.sign .lead{font:600 25px/1.3 "Pixelify Sans";margin:0 0 12px;color:var(--red)}
+.sign p{margin:0 0 18px}
+.act{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:4px 0 16px}
+.act .btn{font-size:18px;padding:10px 16px 12px;white-space:nowrap}
+.note{font-size:16px;color:#5b4a3c;margin:20px 0 0;padding-top:14px;border-top:2px dashed #d8c9a8}
+.screen{position:relative;border:6px solid var(--ink);box-shadow:0 0 0 6px var(--wood),0 24px 50px rgba(0,0,0,.5);background:#000;aspect-ratio:16/9}
+.screen video{display:block;width:100%;height:100%;object-fit:cover}
+.sound{position:absolute;right:12px;bottom:12px;font-size:16px;padding:8px 14px 10px;min-height:44px;box-shadow:0 4px 0 var(--ink)}
+.screen.full .sound{display:none}
+.road{position:relative;height:96px;margin-top:56px;background:url(assets/art/ter_t43.png) 0 24px/48px 48px repeat-x,url(assets/art/ter_t0.png) 0 0/48px 48px;image-rendering:pixelated;border-top:4px solid var(--ink)}
+.walker{position:absolute;bottom:28px;width:48px;height:48px;animation:cross 26s linear infinite}.walker i{display:block;width:48px;height:48px;background-size:48px 48px;image-rendering:pixelated;animation:bob .5s steps(2) infinite}
+.walker.b{animation-delay:-9s}.walker.c{animation-delay:-17s}.walker.d{animation-delay:-4s;animation-direction:reverse}.walker.d i{transform:scaleX(-1)}
+@keyframes bob{50%{translate:0 -3px}}
+@keyframes cross{from{left:-80px}to{left:100%}}
+
+/* sections */
+section{padding:96px 0;scroll-margin-top:70px}
+.kicker{font:600 17px "Pixelify Sans";color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin:0 0 6px}
+h2{font:700 clamp(36px,4.4vw,54px)/1.05 "Pixelify Sans";margin:0 0 18px}
+.intro{max-width:700px;font-size:20px;color:#e2d9c6;margin:0 0 30px}
+
+/* explorer */
+.tabs{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 22px}
+.tabs button{font:700 18px/1 "Pixelify Sans";min-height:44px;padding:10px 18px;background:var(--night2);color:var(--panel);border:4px solid var(--wood);cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--panel);color:var(--ink);border-color:var(--ink);box-shadow:0 0 0 3px var(--wood)}
+.explorer{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:30px;align-items:start}.explorer>*{min-width:0}
+.view{position:relative;border:6px solid var(--ink);box-shadow:0 0 0 6px var(--wood),0 24px 50px rgba(0,0,0,.45);background:var(--grass)}
+.scroller{overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.mapimg{position:relative;min-width:100%}
+.mapimg img{width:100%;image-rendering:pixelated}
+.mapimg[hidden]{display:none}
+.spot{position:absolute;transform:translate(-50%,-50%);width:48px;height:48px;padding:0;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.spot:before{content:"";position:absolute;inset:2px;border:3px dashed var(--gold);filter:drop-shadow(0 0 1px var(--ink)) drop-shadow(0 0 1px var(--ink));opacity:.85}
+.spot:after{content:"";position:absolute;left:50%;top:-14px;translate:-50% 0;border:8px solid transparent;border-top:10px solid var(--gold);filter:drop-shadow(0 2px 0 var(--ink));animation:hop 1s steps(2) infinite}
+.spot:hover:before{opacity:1;border-style:solid}
+.spot[aria-pressed=true]:before{border:3px solid var(--red);opacity:1}
+.spot[aria-pressed=true]:after{border-top-color:var(--red)}
+.spot span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@keyframes hop{50%{translate:-50% -5px}}
+.drag{display:none;font:600 16px "Pixelify Sans";color:#d8ccb4;margin:12px 0 0}
+.info{background:var(--panel);color:var(--ink);border:5px solid var(--wood);box-shadow:0 0 0 5px var(--ink),0 10px 0 5px rgba(0,0,0,.35);padding:0 0 18px;position:sticky;top:90px}
+.zoom{height:170px;background:#4f8a37 no-repeat;background-size:450%;image-rendering:pixelated;border-bottom:5px solid var(--wood)}
+.zoom.chat{background-size:cover;background-position:50% 6%}
+.place{padding:16px 22px 0}
+.place .tag{font:600 16px/1 "Pixelify Sans";letter-spacing:1px;text-transform:uppercase;color:var(--red);margin:0 0 6px}
+.place h3{font:700 27px/1.1 "Pixelify Sans";margin:0 0 8px}
+.place p{margin:0 0 10px;font-size:17px;line-height:1.55}
+.place .btn{font-size:17px;padding:8px 14px 10px;min-height:44px;margin-top:4px;box-shadow:0 4px 0 var(--ink)}
+.steps{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 22px 0;margin-top:8px;border-top:2px dashed #d8c9a8}
+.steps button{font:700 17px/1 "Pixelify Sans";min-width:44px;min-height:44px;padding:8px 12px;background:#e9dfc8;color:var(--ink);border:3px solid var(--ink);cursor:pointer}
+.steps button:hover{background:var(--gold)}
+.steps span{font:600 16px "Pixelify Sans";color:#5b4a3c}
+.js .place[hidden]{display:none}
+html:not(.js) .steps,html:not(.js) .tabs,html:not(.js) .spot,html:not(.js) .zoom{display:none}
+.explore-note{font:600 17px "Pixelify Sans";color:#d8ccb4;margin:18px 0 0}
+
+/* devlog */
+.grass{background:var(--grass) url(assets/art/ter_t0.png) 0 0/48px 48px;image-rendering:pixelated;color:var(--ink)}
+.grass .board{background:var(--panel);border:6px solid var(--wood);box-shadow:0 0 0 6px var(--ink),0 16px 0 6px rgba(0,0,0,.3);padding:40px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.grass h2{color:var(--ink)}
+.yt{position:relative;aspect-ratio:16/9;background:#000 center/cover;border:5px solid var(--ink);cursor:pointer;display:block;width:100%;padding:0}
+.yt:after{content:"▶";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:700 34px "Pixelify Sans";background:var(--red);color:#fff;padding:12px 24px 14px;border:4px solid var(--ink)}
+.yt.on:after{display:none}.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* closing */
+.come{padding:40px 0 96px}
+.gate{max-width:760px;margin:40px auto 0;text-align:center;background:var(--panel);color:var(--ink);border:6px solid var(--wood);box-shadow:0 0 0 6px var(--ink),0 16px 0 6px rgba(0,0,0,.3);padding:44px 40px 36px}
+.gate .who{display:flex;gap:14px;justify-content:center;margin:-84px 0 22px}
+.gate .who img{width:64px;height:64px;image-rendering:pixelated}
+.gate h2{color:var(--ink)}.gate p{font-size:19px;margin:0 0 22px}.gate .ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.gate .note{margin:22px 0 0;border:0;padding:0}
+
+footer{padding:56px 0 70px;font-size:16px;color:#cfc4ae}
+footer a{color:var(--gold)}
+footer .cols{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between}
+footer .fine{font-size:16px;line-height:1.55;color:#a99f8c;margin:34px 0 0;padding-top:20px;border-top:1px solid #3a3850;max-width:900px}
+footer .fine a{color:#d6c08e}
+
+/* responsive (kept last so these rules win) */
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .explorer{grid-template-columns:minmax(0,1fr)}
+  .info{position:static}
+  .grass .board{grid-template-columns:1fr;padding:24px}
+}
+@media(max-width:760px){
+  nav a:not(.btn){display:none}
+  .scroller .mapimg{width:860px}
+  .drag{display:block}
+}
+@media(max-width:600px){
+  .hero{padding-top:28px}
+  .sign{padding:22px 18px 20px}
+  .gate{padding:40px 18px 30px}
+  .grass .board{padding:18px}
+  .zoom{height:140px}.sound .long{display:none}.sound{right:8px;bottom:8px;font-size:16px;padding:6px 10px 8px}
+}
+@media (prefers-reduced-motion:reduce){.walker,.walker i,.spot:after{animation:none}.walker{left:20%}.walker.b{left:48%}.walker.c{left:76%}.walker.d{left:62%}.btn{transition:none}html{scroll-behavior:auto}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
 <body>
-<h1>The Vale</h1>
-<p>The Vale is a personal tool made by Roko Grga for his own work. It is a pixel-art world on his own computer where his Claude Code agents work together on real jobs, including the videos on the YouTube channel <a href="https://youtube.com/@RokoTheG">RokoTheG</a>.</p>
-<p>The Vale connects to YouTube only to read that channel's own statistics (views, watch time, retention), so the videos can be measured and improved. It cannot upload, edit, delete or post anything.</p>
-<p>It is not offered to other users.</p>
-<p><a href="privacy.html">Privacy policy</a></p>
-<p>Contact: kaloshsoftware@gmail.com</p>
-</body></html>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#"><i></i>The Vale</a>
+  <nav aria-label="Main"><a href="#explore">Explore</a><a href="#devlog">Devlog</a><a href="#hello">Say hello</a><a class="btn" href="https://www.youtube.com/@RokoTheG?sub_confirmation=1">▶ YouTube</a></nav>
+</div></header>
+
+<main id="main">
+<div class="hero">
+  <div class="wrap">
+    <div class="sign">
+      <h1>The Vale</h1>
+      <p class="by"><img src="assets/art/ppl_d85.png" width="32" height="32" alt="">By Roko Grga</p>
+      <p class="lead">A pixel-art village where my AI agents live and work.</p>
+      <p>Every Claude Code project I run is a village. Every agent is a resident, every house is a folder, and they only walk to work when real work happens.</p>
+      <div class="act">
+        <a class="btn red" href="https://www.youtube.com/@RokoTheG?sub_confirmation=1">▶ Follow on YouTube</a>
+        <a class="btn paper" href="mailto:kaloshsoftware@gmail.com?subject=The%20Vale">✉ Say hello</a>
+      </div>
+      <p class="note">Private for now: the Vale runs on my own PC. Maybe one day it's yours too.</p>
+    </div>
+    <div class="screen" id="screen">
+      <video id="hv" src="assets/hero-loop.mp4" poster="assets/hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="An 8-second silent loop from the trailer: the world map of villages, then residents walking to the Workshop, the Library and the Town Hall."></video>
+      <button class="btn paper sound" id="sound" type="button">🔊 <span class="long">Watch the trailer </span>with sound</button>
+    </div>
+  </div>
+  <div class="road" aria-hidden="true">
+    <div class="walker"><i style="background-image:url(assets/art/ppl_d99.png)"></i></div>
+    <div class="walker b"><i style="background-image:url(assets/art/ppl_d100.png)"></i></div>
+    <div class="walker c"><i style="background-image:url(assets/art/ppl_d111.png)"></i></div>
+    <div class="walker d"><i style="background-image:url(assets/art/ppl_d88.png)"></i></div>
+  </div>
+</div>
+
+<section id="explore"><div class="wrap">
+  <p class="kicker">Explore</p>
+  <h2>Walk around the Vale</h2>
+  <p class="intro">A dashboard that looks like a game, and you can do real work in it. These are real screenshots: tap any place on the map to see what happens there.</p>
+  <div class="tabs" role="group" aria-label="Choose a map">
+    <button type="button" data-go="world" aria-pressed="true">The world</button>
+    <button type="button" data-go="village" aria-pressed="false">Inside a village</button>
+  </div>
+  <div class="explorer">
+    <div>
+      <div class="view"><div class="scroller" id="scroller">
+        <div class="mapimg" data-view="world">
+          <img src="assets/world.webp" width="1920" height="1080" alt="The world map: villages for Business, YouTube, Websites, Calendogram, the Cutting Room, the Town Crier and the Forge, joined by stone roads, with the Keep and the Great Board in the middle." loading="lazy">
+        </div>
+        <div class="mapimg" data-view="village" hidden>
+          <img src="assets/youtube.webp" width="1920" height="1080" alt="Inside the YouTube village: Town Hall, Library, School, Workshop, Tavern, the Presentation Hall, the Archive and the residents' houses around a village square with a well." loading="lazy">
+        </div>
+      </div></div>
+      <p class="drag">Drag the map sideways to see all of it.</p>
+      <p class="explore-note">Nothing on these maps is staged. They move only when the agents work.</p>
+    </div>
+    <aside class="info" aria-label="About this place">
+      <div class="zoom" id="zoom" aria-hidden="true"></div>
+      <div id="places" aria-live="polite">
+        <article class="place" data-view="world" data-x="56.7" data-y="5.5" data-name="YouTube">
+          <p class="tag">Village</p><h3>YouTube</h3>
+          <p>Plans, scripts and posts my videos and Shorts, and keeps the channel's ledger.</p>
+          <button class="btn paper" type="button" data-go="village">Walk inside ▸</button>
+        </article>
+        <article class="place" data-view="world" data-x="29.4" data-y="8.5" data-name="Websites">
+          <p class="tag">Village</p><h3>Websites</h3>
+          <p>Builds websites from a brief, checks them and puts them online. It built this page.</p>
+        </article>
+        <article class="place" data-view="world" data-x="22" data-y="34" data-name="Business">
+          <p class="tag">Village</p><h3>Business</h3>
+          <p>Takes an idea to its first euro. It orders the research, the app, the site and the marketing from the other villages.</p>
+        </article>
+        <article class="place" data-view="world" data-x="75.5" data-y="17.5" data-name="Cutting Room">
+          <p class="tag">Village</p><h3>Cutting Room</h3>
+          <p>Edits my footage: rough cut, b-roll, motion, captions and sound.</p>
+        </article>
+        <article class="place" data-view="world" data-x="68.4" data-y="45" data-name="Calendogram">
+          <p class="tag">Village</p><h3>Calendogram</h3>
+          <p>My calendar app: tasks by person, place, project and date, with voice notes.</p>
+        </article>
+        <article class="place" data-view="world" data-x="21" data-y="52" data-name="Town Crier">
+          <p class="tag">Village</p><h3>Town Crier</h3>
+          <p>Turns a video or a launch into posts for X. Nothing goes out before I approve it.</p>
+        </article>
+        <article class="place" data-view="world" data-x="17.7" data-y="68" data-name="Forge">
+          <p class="tag">Village</p><h3>Forge</h3>
+          <p>Builds apps from an exact scope and puts them online, then tells the other villages they're ready to market.</p>
+        </article>
+        <article class="place" data-view="world" data-x="43.6" data-y="29" data-name="The Keep">
+          <p class="tag">The Keep</p><h3>The Seneschal</h3>
+          <p>My admin agent lives here. It sends errands to any village and repairs and upgrades the Vale's own code.</p>
+        </article>
+        <article class="place" data-view="world" data-x="43" data-y="48" data-name="The Great Board">
+          <p class="tag">The Great Board</p><h3>Where problems go</h3>
+          <p>When an agent gets stuck on the Vale itself, it pins a note here, and the Seneschal fixes it.</p>
+        </article>
+        <article class="place" data-view="village" data-x="25.8" data-y="52" data-name="Workshop">
+          <p class="tag">Inside YouTube</p><h3>Workshop</h3>
+          <p>The agent is writing or changing files. A resident walks here only while that really happens.</p>
+        </article>
+        <article class="place" data-view="village" data-x="69.1" data-y="25" data-name="Library">
+          <p class="tag">Inside YouTube</p><h3>Library</h3>
+          <p>The agent is reading: the project, the docs, the web.</p>
+        </article>
+        <article class="place" data-view="village" data-x="50" data-y="24" data-name="Town Hall">
+          <p class="tag">Inside YouTube</p><h3>Town Hall</h3>
+          <p>The agent needs me. A question goes on the board here and a red ! goes up on the world map.</p>
+        </article>
+        <article class="place" data-view="village" data-x="48.6" data-y="41.5" data-name="The Mayor" data-img="chat">
+          <p class="tag">A resident</p><h3>The Mayor</h3>
+          <p>Every village has one. Here it's the Showrunner, by the well. I talk to it like a chat, and it does the job. Above: a real chat, file paths blurred.</p>
+        </article>
+        <article class="place" data-view="village" data-x="80.8" data-y="52" data-name="Presentation Hall">
+          <p class="tag">Inside YouTube</p><h3>Presentation Hall</h3>
+          <p>A council of critics, the elders, reviews the work before anything ships.</p>
+        </article>
+        <article class="place" data-view="village" data-x="61.7" data-y="58.5" data-name="Tavern">
+          <p class="tag">Inside YouTube</p><h3>Tavern</h3>
+          <p>Nothing to do? They rest here, and resting costs nothing.</p>
+        </article>
+        <article class="place" data-view="village" data-x="35" data-y="67.5" data-name="Bard's House">
+          <p class="tag">Inside YouTube</p><h3>Homes</h3>
+          <p>Every resident has a house. When the work is done, they stroll home.</p>
+        </article>
+        <article class="place" data-view="village" data-x="67.4" data-y="79" data-name="Archive">
+          <p class="tag">Inside YouTube</p><h3>Archive</h3>
+          <p>Finished and stopped jobs are kept here, with the reason they ended.</p>
+          <button class="btn paper" type="button" data-go="world">◂ Back to the world</button>
+        </article>
+      </div>
+      <div class="steps"><button type="button" id="prev" aria-label="Previous place">◂</button><span id="count"></span><button type="button" id="next" aria-label="Next place">▸</button></div>
+    </aside>
+  </div>
+</div></section>
+
+<section id="devlog" class="grass"><div class="wrap">
+  <div class="board">
+    <div>
+      <button class="yt" type="button" data-id="D9SgLZhsdkc" style="background-image:url(assets/devlog1.webp)" aria-label="Play Devlog 1: I Gave My AI Agents a Village to Work In"></button>
+    </div>
+    <div>
+      <p class="kicker" style="color:var(--red)">Devlog 1</p>
+      <h2>I Gave My AI Agents a Village to Work In</h2>
+      <p>The first devlog: what the Vale is, why I built it, and the agents at work inside it. New videos and live streams come every week.</p>
+      <a class="btn red" href="https://www.youtube.com/@RokoTheG?sub_confirmation=1">▶ Follow on YouTube</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="come" id="hello"><div class="wrap">
+  <div class="gate">
+    <div class="who" aria-hidden="true"><img src="assets/art/ppl_d99.png" alt=""><img src="assets/art/ppl_d100.png" alt=""><img src="assets/art/ppl_d111.png" alt=""><img src="assets/art/ppl_d88.png" alt=""></div>
+    <h2>Watch the Vale grow</h2>
+    <p>New villages, new crafts and the mistakes along the way: 2 live streams and 2 long videos every week on YouTube. Want to try the Vale when it opens, or talk AI agents? Write to me.</p>
+    <div class="ctas"><a class="btn red" href="https://www.youtube.com/@RokoTheG?sub_confirmation=1">▶ Follow on YouTube</a><a class="btn paper" href="mailto:kaloshsoftware@gmail.com?subject=The%20Vale">✉ Say hello</a></div>
+    <p class="note">The Vale is private for now and runs on my own PC. Maybe one day it's yours too.</p>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><b class="px" style="font-size:22px;color:var(--panel)">The Vale</b><br>A personal project by Roko Grga · <a href="mailto:kaloshsoftware@gmail.com">kaloshsoftware@gmail.com</a><br><a href="privacy.html">Privacy policy</a> · © 2026</div>
+    <div>Art: <a href="https://www.kenney.nl">Kenney</a> Tiny Town &amp; Tiny Dungeon (CC0)<br>Built with Claude Code and the Claude Agent SDK.<br>An independent project, not made by Anthropic.</div>
+  </div>
+  <p class="fine" id="youtube-data"><b>YouTube data.</b> The Vale is a personal tool, not offered to other users. With its owner's consent it reads his own YouTube channel's statistics (views, watch time, retention, subscribers gained) through read-only access, keeps them on his own computer, and never sells or shares them. The Vale's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. Details in the <a href="privacy.html">privacy policy</a>.</p>
+</div></footer>
+
+<script>
+// Devlog: load YouTube only on click
+document.querySelectorAll('button.yt').forEach(b=>b.addEventListener('click',()=>{
+  const d=document.createElement('div');d.className='yt on';
+  const f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.id+'?autoplay=1&rel=0';
+  f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.title=b.getAttribute('aria-label');
+  d.appendChild(f);b.replaceWith(d);f.focus();
+}));
+
+// Hero: silent loop, swap to the full trailer with sound on request
+(()=>{
+  const v=document.getElementById('hv'),s=document.getElementById('sound'),box=document.getElementById('screen');
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause();}
+  s.addEventListener('click',()=>{
+    v.loop=false;v.src='assets/brag.mp4';v.poster='assets/brag-poster.jpg';v.muted=false;v.controls=true;
+    v.setAttribute('aria-label','20-second trailer of the Vale, with music');box.classList.add('full');v.play().catch(()=>{});v.focus();
+  });
+})();
+
+// Explorer: one interactive map, places pinned on real screenshots
+(()=>{
+  const places=[...document.querySelectorAll('.place')];
+  const maps={};document.querySelectorAll('.mapimg').forEach(m=>maps[m.dataset.view]=m);
+  const zoom=document.getElementById('zoom'),count=document.getElementById('count'),sc=document.getElementById('scroller');
+  const tabs=[...document.querySelectorAll('.tabs [data-go]')];
+  const img={world:'assets/world.webp',village:'assets/youtube.webp'};
+  const spots=places.map((p,i)=>{
+    const b=document.createElement('button');b.type='button';b.className='spot';
+    b.style.left=p.dataset.x+'%';b.style.top=p.dataset.y+'%';
+    b.innerHTML='<span>'+p.dataset.name+'</span>';b.setAttribute('aria-pressed','false');
+    b.addEventListener("click",()=>{show(i,false);const r=document.querySelector(".info").getBoundingClientRect();if(r.top>innerHeight-120)document.querySelector(".info").scrollIntoView({behavior:"smooth",block:"nearest"});});maps[p.dataset.view].appendChild(b);return b;});
+  let cur=-1;
+  function show(i,scroll){
+    const p=places[i],view=p.dataset.view;cur=i;
+    for(const k in maps)maps[k].hidden=k!==view;
+    tabs.forEach(t=>t.setAttribute("aria-pressed",String(t.dataset.go===view)));
+    places.forEach((q,j)=>{q.hidden=j!==i;spots[j].setAttribute('aria-pressed',String(j===i));});
+    if(p.dataset.img==='chat'){zoom.className='zoom chat';zoom.style.backgroundImage='url(assets/chat-panel.webp)';zoom.style.backgroundPosition='';}
+    else{const S=4.5,x=+p.dataset.x/100,y=+p.dataset.y/100,h=zoom.clientHeight||170,w=zoom.clientWidth||330;
+      const bw=w*S,bh=bw*1080/1920;const px=Math.min(0,Math.max(w-bw,w/2-x*bw)),py=Math.min(0,Math.max(h-bh,h/2-y*bh));
+      zoom.className='zoom';zoom.style.backgroundImage='url('+img[view]+')';zoom.style.backgroundPosition=px+'px '+py+'px';}
+    const same=places.filter(q=>q.dataset.view===view);count.textContent=(same.indexOf(p)+1)+' of '+same.length;
+    if(scroll!==false&&sc.scrollWidth>sc.clientWidth){const m=maps[view];sc.scrollTo({left:+p.dataset.x/100*m.clientWidth-sc.clientWidth/2,behavior:'smooth'});}
+  }
+  function step(d){const view=places[cur].dataset.view,same=places.map((q,j)=>j).filter(j=>places[j].dataset.view===view);
+    const k=same.indexOf(cur);show(same[(k+d+same.length)%same.length]);}
+  document.getElementById('prev').addEventListener('click',()=>step(-1));
+  document.getElementById('next').addEventListener('click',()=>step(1));
+  document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>{
+    const v=b.dataset.go;if(places[cur].dataset.view===v)return;show(places.findIndex(q=>q.dataset.view===v));}));
+  show(0,true);
+  addEventListener('resize',()=>show(cur,false));
+})();
+</script>
+</body>
+</html>

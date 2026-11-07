@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://webgrga.github.io/the-vale-pages/sitemap.xml
