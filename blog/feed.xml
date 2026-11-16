@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>The Vale blog</title>
+  <link>https://vale.rokogrga.com/blog/</link>
+  <atom:link href="https://vale.rokogrga.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Roko Grga builds the Vale in public: notes from the build.</description>
+  <language>en</language>
+  <lastBuildDate>Mon, 16 Nov 2026 08:00:00 GMT</lastBuildDate>
+  <item>
+    <title>My AI agents plan my morning before my coffee is done</title>
+    <link>https://vale.rokogrga.com/blog/my-ai-agents-plan-my-morning/</link>
+    <guid isPermaLink="true">https://vale.rokogrga.com/blog/my-ai-agents-plan-my-morning/</guid>
+    <pubDate>Mon, 16 Nov 2026 08:00:00 GMT</pubDate>
+    <description>Since today, the Vale gives me a To do with two lists: mine and my AI admin's. It plans the day while I make coffee. This post was planned that way.</description>
+  </item>
+</channel>
+</rss>

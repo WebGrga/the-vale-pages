@@ -12,6 +12,7 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://vale.rokogrga.com/">
+<link rel="alternate" type="application/rss+xml" title="The Vale blog" href="https://vale.rokogrga.com/blog/feed.xml">
 <link rel="icon" href="assets/favicon.png"><link rel="stylesheet" href="assets/fonts.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -46,7 +47,7 @@ nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:non
 .btn:active{transform:translateY(6px);box-shadow:inset -4px -4px 0 rgba(0,0,0,.18),0 0 0 var(--ink)}
 .btn.red{background:var(--red);color:var(--panel)}
 .btn.paper{background:var(--panel)}
-nav .btn{opacity:1;font-size:16px;padding:6px 14px 8px;min-height:44px;box-shadow:0 4px 0 var(--ink);background:var(--red);color:var(--panel)}
+nav .btn{opacity:1;font-size:16px;padding:6px 14px 8px;min-height:44px;box-shadow:0 4px 0 var(--ink);background:#a8392a;color:var(--panel)}
 nav .btn:hover{color:var(--panel)}
 
 /* hero */
@@ -144,7 +145,7 @@ footer .fine a{color:#d6c08e}
   .grass .board{grid-template-columns:1fr;padding:24px}
 }
 @media(max-width:760px){
-  nav a:not(.btn){display:none}
+  nav a:not(.btn):not(.keep){display:none}
   .scroller .mapimg{width:860px}
   .drag{display:block}
 }
@@ -163,7 +164,7 @@ footer .fine a{color:#d6c08e}
 <a class="skip" href="#main">Skip to content</a>
 <header class="top"><div class="wrap">
   <a class="brand" href="#"><i></i>The Vale</a>
-  <nav aria-label="Main"><a href="#explore">Explore</a><a href="#devlog">Devlog</a><a href="#hello">Say hello</a><a class="btn" href="https://www.youtube.com/@RokoTheG?sub_confirmation=1">▶ YouTube</a></nav>
+  <nav aria-label="Main"><a href="#explore">Explore</a><a href="#devlog">Devlog</a><a class="keep" href="blog/">Blog</a><a href="#hello">Say hello</a><a class="btn" href="https://www.youtube.com/@RokoTheG?sub_confirmation=1">▶ YouTube</a></nav>
 </div></header>
 
 <main id="main">
@@ -320,7 +321,7 @@ footer .fine a{color:#d6c08e}
 
 <footer><div class="wrap">
   <div class="cols">
-    <div><b class="px" style="font-size:22px;color:var(--panel)">The Vale</b><br>A personal project by Roko Grga · <a href="mailto:kaloshsoftware@gmail.com">kaloshsoftware@gmail.com</a><br><a href="privacy.html">Privacy policy</a> · © 2026</div>
+    <div><b class="px" style="font-size:22px;color:var(--panel)">The Vale</b><br>A personal project by Roko Grga · <a href="mailto:kaloshsoftware@gmail.com">kaloshsoftware@gmail.com</a><br><a href="blog/">Blog</a> · <a href="blog/feed.xml">RSS</a> · <a href="privacy.html">Privacy policy</a> · © 2026</div>
     <div>Art: <a href="https://www.kenney.nl">Kenney</a> Tiny Town &amp; Tiny Dungeon (CC0)<br>Built with Claude Code and the Claude Agent SDK.<br>An independent project, not made by Anthropic.</div>
   </div>
   <p class="fine" id="youtube-data"><b>YouTube data.</b> The Vale is a personal tool, not offered to other users. With its owner's consent it reads his own YouTube channel's statistics (views, watch time, retention, subscribers gained) through read-only access, keeps them on his own computer, and never sells or shares them. The Vale's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. Details in the <a href="privacy.html">privacy policy</a>.</p>
