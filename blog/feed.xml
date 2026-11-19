@@ -6,7 +6,14 @@
   <atom:link href="https://vale.rokogrga.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Roko Grga builds the Vale in public: notes from the build.</description>
   <language>en</language>
-  <lastBuildDate>Mon, 16 Nov 2026 08:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 17 Nov 2026 08:00:00 GMT</lastBuildDate>
+  <item>
+    <title>My agents wrote my posts. I posted none of them.</title>
+    <link>https://vale.rokogrga.com/blog/my-agents-wrote-my-posts/</link>
+    <guid isPermaLink="true">https://vale.rokogrga.com/blog/my-agents-wrote-my-posts/</guid>
+    <pubDate>Tue, 17 Nov 2026 08:00:00 GMT</pubDate>
+    <description>My AI agents wrote my posts for LinkedIn, X, Reddit and this blog, and none went out. What I changed in the Vale's To do so posting is one copy and one click.</description>
+  </item>
   <item>
     <title>My AI agents plan my morning before my coffee is done</title>
     <link>https://vale.rokogrga.com/blog/my-ai-agents-plan-my-morning/</link>
