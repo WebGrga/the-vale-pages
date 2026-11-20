@@ -6,7 +6,14 @@
   <atom:link href="https://vale.rokogrga.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Roko Grga builds the Vale in public: notes from the build.</description>
   <language>en</language>
-  <lastBuildDate>Tue, 17 Nov 2026 08:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 20 Nov 2026 08:00:00 GMT</lastBuildDate>
+  <item>
+    <title>I can now see every cut my AI editor made</title>
+    <link>https://vale.rokogrga.com/blog/every-cut-my-ai-editor-made/</link>
+    <guid isPermaLink="true">https://vale.rokogrga.com/blog/every-cut-my-ai-editor-made/</guid>
+    <pubDate>Fri, 20 Nov 2026 08:00:00 GMT</pubDate>
+    <description>The Cutting Room's rough cut now opens in the Vale's Presentation Hall with a list of every cut the AI editor made. I can play each one before and after and keep it or bring it back.</description>
+  </item>
   <item>
     <title>My agents wrote my posts. I posted none of them.</title>
     <link>https://vale.rokogrga.com/blog/my-agents-wrote-my-posts/</link>
