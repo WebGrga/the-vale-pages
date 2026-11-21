@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Vale's Presence · a YouTube studio run by Claude Code agents</title>
+<meta name="description" content="The Vale's Presence is a local YouTube studio and video editor run by Claude Code agents on your own subscription. They measure every cut, you approve the list, and once you approve the talk, nothing can change a word of it. Free and MIT licensed.">
+<meta property="og:title" content="The Vale's Presence">
+<meta property="og:description" content="A YouTube studio run by Claude Code agents. They measure every cut, you approve the list, and the approved talk is locked.">
+<meta property="og:image" content="https://vale.rokogrga.com/assets/presence-og.jpg">
+<meta property="og:url" content="https://vale.rokogrga.com/presence/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://vale.rokogrga.com/presence/">
+<link rel="icon" href="../assets/favicon.png"><link rel="stylesheet" href="../assets/fonts.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"The Vale's Presence","applicationCategory":"MultimediaApplication","operatingSystem":"Windows, macOS, Linux","description":"A local YouTube studio and video editor run by Claude Code agents: plan, rough cut, overlays, Shorts, titles, thumbnails and upload, with every cut listed for review and the approved talk locked.","license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://vale.rokogrga.com/presence/","author":{"@type":"Person","@id":"https://vale.rokogrga.com/#roko","name":"Roko Grga","url":"https://vale.rokogrga.com/"},"isPartOf":{"@id":"https://vale.rokogrga.com/#site"}}
+</script>
+<style>
+:root{--night:#1b1b2a;--night2:#24233a;--panel:#f5efe0;--ink:#2a2438;--wood:#a9754a;--wood2:#7a5134;--red:#c44d3a;--redink:#a8392a;--gold:#e9b04d;--grass:#5a8f3c}
+*{box-sizing:border-box;font-variant-ligatures:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--panel);font:18px/1.65 Literata,Georgia,serif}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;display:inline-flex;align-items:center;min-height:44px;background:var(--panel);color:var(--ink);padding:12px 16px;z-index:9}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+header.top{position:sticky;top:0;z-index:5;background:rgba(27,27,42,.92);backdrop-filter:blur(6px);border-bottom:4px solid var(--wood2)}
+header.top .wrap{display:flex;align-items:center;gap:22px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;min-height:44px;font:700 26px/1 "Pixelify Sans";text-decoration:none}
+.brand i{width:32px;height:32px;background:url(../assets/art/ppl_d85.png) 0 0/32px 32px;image-rendering:pixelated}
+nav{margin-left:auto;display:flex;align-items:center;gap:20px;font:600 17px/1 "Pixelify Sans"}
+nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;opacity:.85}nav a:hover{opacity:1;color:var(--gold)}
+nav a[aria-current]{opacity:1;color:var(--gold)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 20px/1.1 "Pixelify Sans";text-decoration:none;color:var(--ink);background:var(--gold);padding:12px 22px 14px;border:4px solid var(--ink);box-shadow:inset -4px -4px 0 rgba(0,0,0,.18),0 6px 0 var(--ink);transition:transform .08s,box-shadow .08s;cursor:pointer}
+.btn:hover{transform:translateY(2px);box-shadow:inset -4px -4px 0 rgba(0,0,0,.18),0 4px 0 var(--ink)}
+.btn:active{transform:translateY(6px);box-shadow:inset -4px -4px 0 rgba(0,0,0,.18),0 0 0 var(--ink)}
+.btn.red{background:var(--redink);color:var(--panel)}
+.btn.paper{background:var(--panel)}
+nav .btn{opacity:1;font-size:16px;padding:6px 14px 8px;min-height:44px;box-shadow:0 4px 0 var(--ink);background:var(--redink);color:var(--panel)}
+nav .btn:hover{color:var(--panel)}
+
+/* hero */
+.hero{position:relative;padding:56px 0 64px;background:url(../assets/hero-bg.webp) 50% 0/100% auto no-repeat #57874e;image-rendering:pixelated}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,27,42,.55),rgba(27,27,42,.2) 40%,rgba(27,27,42,.97))}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
+.sign{background:var(--panel);color:var(--ink);padding:30px 32px 26px;border:6px solid var(--wood);box-shadow:0 0 0 6px var(--ink),0 18px 0 6px rgba(0,0,0,.3)}
+.sign .kick{font:600 16px/1 "Pixelify Sans";letter-spacing:1px;text-transform:uppercase;color:var(--redink);margin:0 0 10px}
+.sign h1{font:700 clamp(44px,5.6vw,72px)/.98 "Pixelify Sans";margin:0 0 14px;color:var(--ink);text-shadow:0 5px 0 rgba(196,77,58,.35)}
+.sign .lead{font:600 23px/1.3 "Pixelify Sans";margin:0 0 12px;color:var(--redink)}
+.sign p{margin:0 0 18px}
+.act{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:4px 0 18px}
+.act .btn{font-size:18px;padding:10px 16px 12px;white-space:nowrap}
+.note{font-size:16px;color:#5b4a3c;margin:18px 0 0;padding-top:14px;border-top:2px dashed #d8c9a8}
+
+/* the example cut row, drawn in HTML */
+.studio{background:#14131f;border:6px solid var(--ink);box-shadow:0 0 0 6px var(--wood),0 24px 50px rgba(0,0,0,.5);color:var(--panel);font-size:16px}
+.studio .bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--night2);border-bottom:3px solid var(--ink);font:600 16px/1 "Pixelify Sans";overflow:hidden;white-space:nowrap}
+.chip{display:inline-block;padding:6px 9px;border:2px solid #4a4766;color:#cfc4ae}
+.chip.done{border-color:var(--grass);color:#b9e29c}
+.chip.now{border-color:var(--gold);color:var(--ink);background:var(--gold)}
+.studio .body{padding:16px 16px 18px}
+.studio .h{font:700 20px/1.1 "Pixelify Sans";margin:0 0 4px}
+.studio .sub{font-size:16px;color:#b3a993;margin:0 0 14px}
+.cut{background:#211f33;border:3px solid #3a3850;padding:12px 14px;margin:0 0 10px}
+.cut.flag{border-color:var(--gold)}
+.cut .head{display:flex;justify-content:space-between;gap:10px;font:600 16px/1.2 "Pixelify Sans";margin:0 0 8px;color:#cfc4ae}
+.cut .head b{color:var(--gold);font-weight:700}
+.cut .words{margin:0 0 10px;line-height:1.5}
+.cut del{color:#e58b7a;text-decoration-thickness:2px}
+.cut .row{display:flex;flex-wrap:wrap;gap:8px}
+.cut button{font:700 16px/1 "Pixelify Sans";min-height:44px;padding:8px 12px;background:#2f2d45;color:var(--panel);border:3px solid #4a4766;cursor:pointer}
+.cut button:hover{border-color:var(--gold)}
+.cut button[aria-pressed=true]{background:var(--panel);color:var(--ink);border-color:var(--ink)}
+.cut .said{font-size:16px;color:#b9e29c;margin:8px 0 0;min-height:1.5em}
+.caption{font:600 16px "Pixelify Sans";color:#d8ccb4;margin:12px 0 0}
+
+/* sections */
+section{padding:88px 0;scroll-margin-top:70px}
+.kicker{font:600 17px "Pixelify Sans";color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin:0 0 6px}
+h2{font:700 clamp(34px,4.2vw,52px)/1.05 "Pixelify Sans";margin:0 0 18px}
+.intro{max-width:720px;font-size:20px;color:#e2d9c6;margin:0 0 30px}
+
+/* watch it work */
+.screen{position:relative;border:6px solid var(--ink);box-shadow:0 0 0 6px var(--wood),0 24px 50px rgba(0,0,0,.45);background:#000;aspect-ratio:16/9;max-width:960px}
+.screen video{display:block;width:100%;height:100%}
+
+/* features */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.card{background:var(--panel);color:var(--ink);border:5px solid var(--wood);box-shadow:0 0 0 5px var(--ink),0 10px 0 5px rgba(0,0,0,.35);padding:22px 22px 18px}
+.card h3{font:700 23px/1.15 "Pixelify Sans";margin:0 0 8px}
+.card p{margin:0;font-size:17px;line-height:1.55}
+.card.big{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.card.big h3{font-size:30px}
+.lockbox{font:600 17px/1.5 "Pixelify Sans";background:#e9dfc8;border:3px solid var(--ink);padding:14px 16px}
+.lockbox span{display:block}
+.lockbox .bad{color:var(--redink)}
+
+/* numbers */
+.numbers{background:var(--grass) url(../assets/art/ter_t0.png) 0 0/48px 48px;image-rendering:pixelated;color:var(--ink)}
+.board{background:var(--panel);border:6px solid var(--wood);box-shadow:0 0 0 6px var(--ink),0 16px 0 6px rgba(0,0,0,.3);padding:40px}
+.board h2{color:var(--ink)}
+.board .intro{color:#4a3d33}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.stat{border-top:4px solid var(--ink);padding-top:14px}
+.stat b{display:block;font:700 clamp(40px,4.6vw,58px)/1 "Pixelify Sans";color:var(--redink);margin:0 0 8px}
+.stat strong{display:block;font:700 19px/1.25 "Pixelify Sans";margin:0 0 6px}
+.stat p{margin:0;font-size:17px;line-height:1.55}
+
+/* stages */
+.stages{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px;padding:0;list-style:none}
+.stages button{font:700 17px/1 "Pixelify Sans";min-height:44px;padding:10px 14px;background:var(--night2);color:var(--panel);border:4px solid var(--wood);cursor:pointer}
+.stages button:hover{border-color:var(--gold)}
+.stages button[aria-pressed=true]{background:var(--panel);color:var(--ink);border-color:var(--ink);box-shadow:0 0 0 3px var(--wood)}
+.stages .you{color:var(--gold)}
+.stages button[aria-pressed=true] .you{color:var(--redink)}
+.stage{max-width:760px;background:var(--panel);color:var(--ink);border:5px solid var(--wood);box-shadow:0 0 0 5px var(--ink),0 10px 0 5px rgba(0,0,0,.35);padding:22px 24px}
+.stage .who{font:600 16px/1 "Pixelify Sans";letter-spacing:1px;text-transform:uppercase;color:var(--redink);margin:0 0 6px}
+.stage h3{font:700 27px/1.1 "Pixelify Sans";margin:0 0 8px}
+.stage p{margin:0;font-size:18px}
+.js .stage[hidden]{display:none}
+html:not(.js) .stages{display:none}
+html:not(.js) .stage{margin:0 0 16px}
+.recipes{margin:26px 0 0;color:#e2d9c6;max-width:760px}
+
+/* setup and limits */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}.two>*{min-width:0}
+pre{margin:0 0 18px;background:#14131f;border:4px solid var(--ink);box-shadow:0 0 0 4px var(--wood);padding:16px 18px;overflow:auto;font:16px/1.6 ui-monospace,Consolas,monospace;color:#e9dfc8}
+ul.list{margin:0;padding:0 0 0 22px}
+ul.list li{margin:0 0 10px}
+ul.list b{font-weight:700;color:#fff}
+h3.sm{font:700 24px/1.15 "Pixelify Sans";margin:0 0 12px}
+
+/* closing */
+.gate{max-width:780px;margin:0 auto;text-align:center;background:var(--panel);color:var(--ink);border:6px solid var(--wood);box-shadow:0 0 0 6px var(--ink),0 16px 0 6px rgba(0,0,0,.3);padding:40px 36px 34px}
+.gate h2{color:var(--ink)}.gate p{font-size:19px;margin:0 0 22px}
+.gate .ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.come{padding:40px 0 96px}
+
+footer{padding:40px 0 70px;font-size:16px;color:#cfc4ae;border-top:1px solid #3a3850}
+footer a{color:var(--gold)}
+footer .cols{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between}
+
+@media(max-width:900px){
+  .hero .wrap,.two,.card.big{grid-template-columns:minmax(0,1fr)}
+  .stats{grid-template-columns:1fr}
+  .board{padding:24px}
+}
+@media(max-width:760px){
+  nav a:not(.btn):not(.keep){display:none}
+}
+@media(max-width:600px){
+  .hero{padding-top:28px}
+  .sign{padding:22px 18px 20px}
+  .gate{padding:32px 18px 28px}
+  .board{padding:18px}
+  .studio .bar .chip:nth-child(-n+2){display:none}
+  .brand{font-size:22px;white-space:nowrap}nav{gap:10px}header.top .wrap{gap:10px;padding:0 16px}nav .btn{padding:6px 10px 8px}
+}
+@media(max-width:420px){nav a[aria-current]{display:none}}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}html{scroll-behavior:auto}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../"><i></i>The Vale</a>
+  <nav aria-label="Main"><a href="../#explore">Explore</a><a class="keep" href="./" aria-current="page">Presence</a><a class="keep" href="../blog/">Blog</a><a class="btn" href="https://github.com/WebGrga/the-vales-presence" rel="noopener">GitHub</a></nav>
+</div></header>
+
+<main id="main">
+<div class="hero">
+  <div class="wrap">
+    <div class="sign">
+      <p class="kick">Made in the Vale · free, MIT</p>
+      <h1>The Vale's Presence</h1>
+      <p class="lead">A YouTube studio run by Claude Code agents.</p>
+      <p>You drop in footage. The agents plan, cut, add overlays, cut Shorts, research titles and thumbnails, and get the upload ready. They measure every cut and you go through the list. Once you approve the talk, nothing can change a word of it.</p>
+      <div class="act">
+        <a class="btn red" href="https://github.com/WebGrga/the-vales-presence" rel="noopener">Get it on GitHub</a>
+        <a class="btn paper" href="#watch">▶ Watch it work</a>
+      </div>
+      <p class="note">Runs on your own PC, on your own Claude Code login. No API key, nothing else to pay for.</p>
+    </div>
+
+    <div>
+      <figure class="studio-fig" style="margin:0"><div class="studio">
+        <div class="bar" aria-hidden="true"><span class="chip done">Ask ✓</span><span class="chip done">Rough cut ✓</span><span class="chip now">Rough review</span><span class="chip">Visuals</span><span class="chip">Final</span></div>
+        <div class="body">
+          <p class="h">Cuts · flagged ones first</p>
+          <p class="sub">Each row shows what the editor removed and why. Try the buttons.</p>
+          <div class="cut flag">
+            <p class="head"><span><b>Flagged</b> · aside · 4.8 s</span><span>02:14</span></p>
+            <p class="words">…and that's the whole setup. <del>Actually, quick side note, I tried this last week and it broke twice.</del> So the first thing it does is…</p>
+            <div class="row" role="group" aria-label="Your call on this cut">
+              <button type="button" aria-pressed="false" data-say="Kept: the aside stays out of the video.">Keep</button>
+              <button type="button" aria-pressed="false" data-say="Restored: the aside goes back in.">Restore</button>
+              <button type="button" aria-pressed="false" data-say="Note sent: “keep the cut, leave a breath before So”.">Note</button>
+            </div>
+            <p class="said" aria-live="polite"></p>
+          </div>
+          <div class="cut">
+            <p class="head"><span>filler · 1.1 s</span><span>02:31</span></p>
+            <p class="words">It checks every join <del>so, um,</del> on the sound.</p>
+          </div>
+        </div>
+      </div>
+      <figcaption class="caption">An example of the rough review screen, drawn for this page, not from a real project.</figcaption></figure>
+    </div>
+  </div>
+</div>
+
+<section id="watch"><div class="wrap">
+  <p class="kicker">Watch it work</p>
+  <h2>From footage to a finished video</h2>
+  <p class="intro">20 seconds, with music. Footage drops in and the agent starts transcribing. The cuts are listed and one gets restored. The talk is approved and locked. A label is fixed in 36 seconds, Shorts are kept or dropped, and a thumbnail is tested in a feed before the upload. The project in it is a made-up woodworking channel.</p>
+  <div class="screen">
+    <video controls playsinline preload="none" poster="../assets/presence-poster.jpg" src="../assets/presence-launch.mp4" aria-label="The launch video of The Vale's Presence, 20 seconds, with music"></video>
+  </div>
+</div></section>
+
+<section id="what" style="padding-top:0"><div class="wrap">
+  <p class="kicker">What it does</p>
+  <h2>The agents do the work. You make the calls.</h2>
+  <p class="intro">A screen laid out like a video editor, in a pixel-art frame. Every stage shows how long it took and what it cost.</p>
+  <div class="grid">
+    <article class="card big">
+      <div>
+        <h3>The approved talk is locked</h3>
+        <p>When you press Approve &amp; lock, the rough cut's edit list and video are fingerprinted. Before and after every later stage they're checked again. If anything changed a word, the project stops and says which file changed and at which stage. Visuals, fixes or a confused agent can't touch what you approved.</p>
+      </div>
+      <div class="lockbox">
+        <span>✓ Approve &amp; lock · rough.mp4, edl.json</span>
+        <span>✓ Visuals · voice matches the rough</span>
+        <span>✓ Fix one label · voice matches</span>
+        <span class="bad">✗ edl.json changed at Visuals · project halted</span>
+      </div>
+    </article>
+    <article class="card"><h3>Every cut is measured</h3><p>Every word is transcribed. Silences, fillers, retakes and asides are measured and cut, and each join is checked on the sound so no word gets clipped. Every cut is listed with Before and After clips.</p></article>
+    <article class="card"><h3>Fixes take seconds</h3><p>Only the overlay windows and the stretches of the final that changed are rendered again. One label fixed in a finished 10-minute video took 36 seconds.</p></article>
+    <article class="card"><h3>Agents sleep while it renders</h3><p>A long render runs in the background and wakes the agent when it's done, so no agent sits waiting on a progress bar.</p></article>
+    <article class="card"><h3>The whole studio</h3><p>Plan, script, record, edit, Shorts from a long video, title and thumbnail research, thumbnail options, your thumbnail next to real ones in a feed, and the upload.</p></article>
+    <article class="card"><h3>You see what the agent reads</h3><p>Every skill, rule and context file each stage reads, editable in place. Skills switch on and off per stage, and a house rules book learns from your corrections.</p></article>
+    <article class="card"><h3>Take it anywhere</h3><p>Export to MP4, SRT subtitles, and FCPXML or OTIO, so the cut opens in another editor.</p></article>
+  </div>
+</div></section>
+
+<section class="numbers" id="numbers"><div class="wrap"><div class="board">
+  <p class="kicker" style="color:var(--redink)">The numbers</p>
+  <h2>Measured on real videos</h2>
+  <p class="intro">One Windows PC with an RTX 3060.</p>
+  <div class="stats">
+    <div class="stat"><b>36 s</b><strong>to fix one label in a finished 10-minute video</strong><p>Re-rendering and re-checking by hand takes about an hour. One overlay window is drawn again and one of 39 chunks is re-encoded.</p></div>
+    <div class="stat"><b>6.7 min</b><strong>for the visuals of a 10-minute video, instead of 70</strong><p>Still stretches of an overlay are drawn once and held, and the final is put together from cached chunks.</p></div>
+    <div class="stat"><b>~1 min</b><strong>for a Short's round</strong><p>Render the overlays, put the Short together, check it.</p></div>
+  </div>
+</div></div></section>
+
+<section id="how"><div class="wrap">
+  <p class="kicker">How a project goes</p>
+  <h2>Nine stages, four of them yours</h2>
+  <p class="intro">Tap a stage. The ones marked ★ wait for you: nothing is uploaded until you press the button.</p>
+  <ul class="stages" role="group" aria-label="Choose a stage">
+    <li><button type="button" data-s="0" aria-pressed="true">1 Ask</button></li>
+    <li><button type="button" data-s="1" aria-pressed="false">2 Plan &amp; record</button></li>
+    <li><button type="button" data-s="2" aria-pressed="false">3 Rough cut</button></li>
+    <li><button type="button" data-s="3" aria-pressed="false">4 Rough review <span class="you">★</span></button></li>
+    <li><button type="button" data-s="4" aria-pressed="false">5 Visuals</button></li>
+    <li><button type="button" data-s="5" aria-pressed="false">6 Inspect</button></li>
+    <li><button type="button" data-s="6" aria-pressed="false">7 Final review <span class="you">★</span></button></li>
+    <li><button type="button" data-s="7" aria-pressed="false">8 Titles &amp; thumbnails <span class="you">★</span></button></li>
+    <li><button type="button" data-s="8" aria-pressed="false">9 Upload &amp; export <span class="you">★</span></button></li>
+  </ul>
+  <div id="stagebox" aria-live="polite">
+    <article class="stage"><p class="who">The agent</p><h3>Ask</h3><p>The agent asks what it needs to know about the video and writes the brief.</p></article>
+    <article class="stage" hidden><p class="who">The agent, then you</p><h3>Plan &amp; record</h3><p>Only when you start from an idea. The agent looks at titles and thumbnails of videos like yours and writes a plan you approve. Then you record and drop the footage in.</p></article>
+    <article class="stage" hidden><p class="who">The agent</p><h3>Rough cut</h3><p>Every word is transcribed. Silences, fillers, retakes and asides are measured and cut, and every join is checked on the sound so no word is clipped.</p></article>
+    <article class="stage" hidden><p class="who">You</p><h3>Rough review</h3><p>Watch the rough and go through the cuts, flagged ones first, with Before / After, Keep, Restore or a note. Strike words in the transcript. Then Approve &amp; lock, or send it back with your notes.</p></article>
+    <article class="stage" hidden><p class="who">The agent</p><h3>Visuals</h3><p>Labels, cards, punch-ins, captions and sound go on top of the locked rough, from an overlay kit. A proof first, then the final.</p></article>
+    <article class="stage" hidden><p class="who">The agent</p><h3>Inspect</h3><p>The agent checks the final against a checklist: length, the locked voice, the frames, text inside the safe areas.</p></article>
+    <article class="stage" hidden><p class="who">You</p><h3>Final review</h3><p>Approve it or send it back. A fix renders only what changed.</p></article>
+    <article class="stage" hidden><p class="who">You</p><h3>Titles &amp; thumbnails</h3><p>Options as cards, with your thumbnail shown in a feed next to real videos.</p></article>
+    <article class="stage" hidden><p class="who">You</p><h3>Upload &amp; export</h3><p>The upload happens only when you press the button. Export gives you the video, the subtitles and the edit list for other programs.</p></article>
+  </div>
+  <p class="recipes">Four recipes to start from: <b>Edit a video</b> (footage you have), <b>A video from the idea</b>, <b>Edit a Short</b>, and <b>Shorts from a long video</b>, where the agent picks the moments and you keep or drop each one.</p>
+</div></section>
+
+<section id="setup" style="padding-top:0"><div class="wrap two">
+  <div>
+    <p class="kicker">Get started</p>
+    <h2>Up and running</h2>
+<pre><code>git clone https://github.com/WebGrga/the-vales-presence
+cd the-vales-presence
+npm install &amp;&amp; npm install --prefix engine/remotion
+npm start</code></pre>
+    <p>It opens on <code>localhost:4848</code>. If something is missing, the Setup tab checks every requirement and gives you the command that fixes it.</p>
+    <h3 class="sm" style="margin-top:26px">You need</h3>
+    <ul class="list">
+      <li><b>Claude Code</b>, logged in. The agents run on that login.</li>
+      <li><b>Node.js 22</b>, <b>ffmpeg</b>, <b>Python 3.10+</b> with numpy and Pillow, and <b>uv</b>.</li>
+      <li>About <b>20 GB</b> free for a long video's render cache.</li>
+      <li>A GPU is optional: NVIDIA, Intel, AMD and Apple encoders are found by themselves.</li>
+    </ul>
+  </div>
+  <div>
+    <p class="kicker">Honest limits</p>
+    <h2>What it doesn't do yet</h2>
+    <ul class="list">
+      <li>Tested on real footage on <b>Windows with an NVIDIA GPU</b>. macOS and Linux run, but haven't been tried on real footage yet.</li>
+      <li>The agents use your Claude subscription's limits. A long video takes several long turns, and you see the cost of every stage as it happens.</li>
+      <li>Speech-to-text is tuned for <b>English</b>.</li>
+      <li>FCPXML and OTIO exports carry the cut, not the overlays.</li>
+      <li>Overlays are React components rendered with Remotion. Changing their look means editing a template's code, which the agent can do for you.</li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="come"><div class="wrap">
+  <div class="gate">
+    <p class="kicker" style="color:var(--redink)">Made in the Vale</p>
+    <h2>Grown out of the Cutting Room</h2>
+    <p>Presence started as the Cutting Room, the village in the Vale that edits my own videos. It's the same editor, taken out of the Vale so it runs on its own.</p>
+    <div class="ctas">
+      <a class="btn red" href="https://github.com/WebGrga/the-vales-presence" rel="noopener">Get it on GitHub</a>
+      <a class="btn paper" href="../">See the Vale</a>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap cols">
+  <p>The Vale's Presence · made by Roko Grga in <a href="../">the Vale</a> · MIT licence</p>
+  <p><a href="https://www.youtube.com/@RokoTheG" rel="noopener">YouTube</a> · <a href="../blog/">Blog</a> · <a href="../privacy.html">Privacy</a></p>
+</div></footer>
+
+<script>
+document.querySelectorAll('.cut .row').forEach(function(row){
+  var said=row.parentNode.querySelector('.said');
+  row.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click',function(){
+      row.querySelectorAll('button').forEach(function(o){o.setAttribute('aria-pressed',o===b?'true':'false')});
+      said.textContent=b.dataset.say;
+    });
+  });
+});
+var sb=document.querySelectorAll('.stages button'),st=document.querySelectorAll('#stagebox .stage');
+sb.forEach(function(b){
+  b.addEventListener('click',function(){
+    sb.forEach(function(o){o.setAttribute('aria-pressed',o===b?'true':'false')});
+    st.forEach(function(s,i){s.hidden=i!=b.dataset.s});
+  });
+});
+</script>
+</body>
+</html>

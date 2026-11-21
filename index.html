@@ -23,7 +23,7 @@
 </script>
 <style>
 :root{--night:#1b1b2a;--night2:#24233a;--panel:#f5efe0;--ink:#2a2438;--wood:#a9754a;--wood2:#7a5134;--red:#c44d3a;--gold:#e9b04d;--grass:#5a8f3c}
-*{box-sizing:border-box}
+*{box-sizing:border-box;font-variant-ligatures:none!important}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--night);color:var(--panel);font:18px/1.65 Literata,Georgia,serif}
 img{max-width:100%;height:auto;display:block}
@@ -137,6 +137,14 @@ footer .cols{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-bet
 footer .fine{font-size:16px;line-height:1.55;color:#a99f8c;margin:34px 0 0;padding-top:20px;border-top:1px solid #3a3850;max-width:900px}
 footer .fine a{color:#d6c08e}
 
+/* made in the Vale */
+.product{display:block;max-width:760px;text-decoration:none;background:var(--panel);color:var(--ink);border:5px solid var(--wood);box-shadow:0 0 0 5px var(--ink),0 10px 0 5px rgba(0,0,0,.35);padding:24px 26px 22px;transition:transform .08s}
+.product:hover{transform:translateY(-3px)}
+.product .ptag{display:block;font:600 16px/1 "Pixelify Sans";letter-spacing:1px;text-transform:uppercase;color:#a8392a;margin:0 0 8px}
+.product b{display:block;font:700 30px/1.1 "Pixelify Sans";margin:0 0 8px}
+.product span{display:block;font-size:18px}
+.product .more{font:700 18px "Pixelify Sans";color:#a8392a;margin-top:12px}
+
 /* responsive (kept last so these rules win) */
 @media(max-width:900px){
   .hero .wrap{grid-template-columns:1fr}
@@ -148,6 +156,9 @@ footer .fine a{color:#d6c08e}
   nav a:not(.btn):not(.keep){display:none}
   .scroller .mapimg{width:860px}
   .drag{display:block}
+}
+@media(max-width:480px){
+  nav a.wide{display:none}
 }
 @media(max-width:600px){
   .hero{padding-top:28px}
@@ -164,7 +175,7 @@ footer .fine a{color:#d6c08e}
 <a class="skip" href="#main">Skip to content</a>
 <header class="top"><div class="wrap">
   <a class="brand" href="#"><i></i>The Vale</a>
-  <nav aria-label="Main"><a href="#explore">Explore</a><a href="#devlog">Devlog</a><a class="keep" href="blog/">Blog</a><a href="#hello">Say hello</a><a class="btn" href="https://www.youtube.com/@RokoTheG?sub_confirmation=1">▶ YouTube</a></nav>
+  <nav aria-label="Main"><a href="#explore">Explore</a><a class="keep wide" href="presence/">Presence</a><a href="#devlog">Devlog</a><a class="keep" href="blog/">Blog</a><a href="#hello">Say hello</a><a class="btn" href="https://www.youtube.com/@RokoTheG?sub_confirmation=1" rel="noopener">▶ YouTube</a></nav>
 </div></header>
 
 <main id="main">
@@ -176,7 +187,7 @@ footer .fine a{color:#d6c08e}
       <p class="lead">A pixel-art village where my AI agents live and work.</p>
       <p>Every Claude Code project I run is a village. Every agent is a resident, every house is a folder, and they only walk to work when real work happens.</p>
       <div class="act">
-        <a class="btn red" href="https://www.youtube.com/@RokoTheG?sub_confirmation=1">▶ Follow on YouTube</a>
+        <a class="btn red" href="https://www.youtube.com/@RokoTheG?sub_confirmation=1" rel="noopener">▶ Follow on YouTube</a>
         <a class="btn paper" href="mailto:kaloshsoftware@gmail.com?subject=The%20Vale">✉ Say hello</a>
       </div>
       <p class="note">Private for now: the Vale runs on my own PC. Maybe one day it's yours too.</p>
@@ -294,6 +305,16 @@ footer .fine a{color:#d6c08e}
   </div>
 </div></section>
 
+<section id="made" style="padding-top:0"><div class="wrap">
+  <p class="kicker">Made in the Vale</p>
+  <h2>Tools that grew out of the villages</h2>
+  <a class="product" href="presence/">
+    <span class="ptag">Free · MIT · runs on your PC</span>
+    <b>The Vale's Presence</b>
+    <span>A YouTube studio run by Claude Code agents, grown out of the Cutting Room. They measure every cut, you approve the list, and once you approve the talk, nothing can change a word of it.</span>
+    <span class="more">See Presence ▸</span>
+  </a>
+</div></section>
 <section id="devlog" class="grass"><div class="wrap">
   <div class="board">
     <div>
@@ -303,7 +324,7 @@ footer .fine a{color:#d6c08e}
       <p class="kicker" style="color:var(--red)">Devlog 1</p>
       <h2>I Gave My AI Agents a Village to Work In</h2>
       <p>The first devlog: what the Vale is, why I built it, and the agents at work inside it. New videos and live streams come every week.</p>
-      <a class="btn red" href="https://www.youtube.com/@RokoTheG?sub_confirmation=1">▶ Follow on YouTube</a>
+      <a class="btn red" href="https://www.youtube.com/@RokoTheG?sub_confirmation=1" rel="noopener">▶ Follow on YouTube</a>
     </div>
   </div>
 </div></section>
@@ -313,7 +334,7 @@ footer .fine a{color:#d6c08e}
     <div class="who" aria-hidden="true"><img src="assets/art/ppl_d99.png" alt=""><img src="assets/art/ppl_d100.png" alt=""><img src="assets/art/ppl_d111.png" alt=""><img src="assets/art/ppl_d88.png" alt=""></div>
     <h2>Watch the Vale grow</h2>
     <p>New villages, new crafts and the mistakes along the way: 2 live streams and 2 long videos every week on YouTube. Want to try the Vale when it opens, or talk AI agents? Write to me.</p>
-    <div class="ctas"><a class="btn red" href="https://www.youtube.com/@RokoTheG?sub_confirmation=1">▶ Follow on YouTube</a><a class="btn paper" href="mailto:kaloshsoftware@gmail.com?subject=The%20Vale">✉ Say hello</a></div>
+    <div class="ctas"><a class="btn red" href="https://www.youtube.com/@RokoTheG?sub_confirmation=1" rel="noopener">▶ Follow on YouTube</a><a class="btn paper" href="mailto:kaloshsoftware@gmail.com?subject=The%20Vale">✉ Say hello</a></div>
     <p class="note">The Vale is private for now and runs on my own PC. Maybe one day it's yours too.</p>
   </div>
 </div></section>
@@ -321,10 +342,10 @@ footer .fine a{color:#d6c08e}
 
 <footer><div class="wrap">
   <div class="cols">
-    <div><b class="px" style="font-size:22px;color:var(--panel)">The Vale</b><br>A personal project by Roko Grga · <a href="mailto:kaloshsoftware@gmail.com">kaloshsoftware@gmail.com</a><br><a href="blog/">Blog</a> · <a href="blog/feed.xml">RSS</a> · <a href="privacy.html">Privacy policy</a> · © 2026</div>
-    <div>Art: <a href="https://www.kenney.nl">Kenney</a> Tiny Town &amp; Tiny Dungeon (CC0)<br>Built with Claude Code and the Claude Agent SDK.<br>An independent project, not made by Anthropic.</div>
+    <div><b class="px" style="font-size:22px;color:var(--panel)">The Vale</b><br>A personal project by Roko Grga · <a href="mailto:kaloshsoftware@gmail.com">kaloshsoftware@gmail.com</a><br><a href="presence/">Presence</a> · <a href="blog/">Blog</a> · <a href="blog/feed.xml">RSS</a> · <a href="privacy.html">Privacy policy</a> · © 2026</div>
+    <div>Art: <a href="https://www.kenney.nl" rel="noopener">Kenney</a> Tiny Town &amp; Tiny Dungeon (CC0)<br>Built with Claude Code and the Claude Agent SDK.<br>An independent project, not made by Anthropic.</div>
   </div>
-  <p class="fine" id="youtube-data"><b>YouTube data.</b> The Vale is a personal tool, not offered to other users. With its owner's consent it reads his own YouTube channel's statistics (views, watch time, retention, subscribers gained) through read-only access, keeps them on his own computer, and never sells or shares them. The Vale's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. Details in the <a href="privacy.html">privacy policy</a>.</p>
+  <p class="fine" id="youtube-data"><b>YouTube data.</b> The Vale is a personal tool, not offered to other users. With its owner's consent it reads his own YouTube channel's statistics (views, watch time, retention, subscribers gained) through read-only access, keeps them on his own computer, and never sells or shares them. The Vale's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements. Details in the <a href="privacy.html">privacy policy</a>.</p>
 </div></footer>
 
 <script>
